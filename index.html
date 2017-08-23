@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Pomodoro timer</title>
+    <link rel="icon" href="assets/img/tomato_small.png">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="assets/css/pomodore.css" rel="stylesheet">
+    <script src="assets/css/jquery-3.2.1.js"></script>
+</head>
+
+<body>
+    <h1>Pomodoro Timer</h1>
+    <div id="container">
+        <h2 id="date"></h2>
+        <p id="timer">30 min 0 sec</p>
+        <div id="buttons">
+            <button id="start">Start</button>
+            <button id="stop">Stop</button>
+            <button id="reset">Reset</button>
+            <button id="short_break">Short break</button>
+            <button id="long_break">Long break</button>
+        </div>
+        <form>
+            What i have to do :<br><input type="text" name="toDo">  
+        </form>
+        <button id="addItem">+</button>
+        <ul></ul>
+        
+    </div>
+
+    <script>
+        $(document).ready(function() {
+
+            // SET VARIABLES
+            var d = new Date();
+            var s = 0;
+            var m = 30;
+
+            // DATE (make it look better after)
+            //("#date").html(d);
+            $("#date").html("Date : " + (d.getMonth() + 1) + " / " + d.getDate() + " / " + d.getFullYear());
+
+            // START THE TIMER
+            var startTimer = $("#start").click(function() {
+                start = setInterval(timer, 1000);
+                $("#start").prop('disabled', true);
+                $("#stop").prop('disabled', false);
+            });
+
+            // STOP THE TIMER
+            $("#stop").click(function() {
+                clearInterval(start);
+                $("#stop").prop('disabled', true);
+                $("#start").prop('disabled', false);
+            });
+
+            // RESET THE TIMER
+            $("#reset").click(function() {
+                clearInterval(start);
+                m = 30;
+                s = 0;
+                $("#timer").html(m + " min " + s + " sec");
+                $("#start").prop('disabled', false);
+                $("#stop").prop('disabled', false);
+            });
+
+            // SHORT BREAK
+            $("#short_break").click(function() {
+                clearInterval(start);
+                m = 5;
+                s = 0;
+                $("#timer").html(m + " min " + "0 sec");
+                $("#start").prop('disabled', false);
+                $("#stop").prop('disabled', false);
+            });
+
+            // LONG BREAK
+            $("#long_break").click(function() {
+                clearInterval(start);
+                m = 10;
+                s = 0;
+                $("#timer").html(m + " min " + "0 sec");
+                $("#start").prop('disabled', false);
+                $("#stop").prop('disabled', false);
+            });
+            
+            // ADD A TASK TO THE LIST
+            $("#addItem").click(function() {
+                var add = $("input[name=toDo]").val();
+                $("ul").append("<li>" + add + "</li>");
+            });
+
+            // TIMER FUNCTION
+            var timer = function() {
+                if (s <= 0) {
+                    s = 60;
+                    m--;
+                }
+                s--;
+                $("#timer").html(m + " min " + s + " sec");
+                if (s <= 0 && m <= 0) {
+                    clearInterval(start);
+                    alert("Ding ding, timer is over.");
+                    /* var audio = new Audio('url');
+                    audio.play(); */
+                }
+                if (s < 10)
+                    $("#timer").html(m + " min 0" + s + " sec");
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+body {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    background-image: url(../img/tomato_large.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 512px;
+}
+
+#container {
+    padding-top: 90px;
+}
+
+h1 {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 2.5em;
+    color: #D13834;
+}
+h2 {
+    color: white;
+    font-weight: 300;
+}
+
+#timer {
+    color: #88C057;
+    font-size: 2.2em;
+    padding-top: 20px;
+}
+
+#buttons {
+    width: 350px;
+    margin: 0 auto;
+}
+button {
+    background: none;
+    border: 1px solid white;
+    padding: 8px 12px;
+    margin: 8px 10px;
+    color: white;
+    font-size: 0.6em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    outline: none;
+    transition: 0.4s;
+}
+button:hover:enabled {
+    background-color: #88C057;
+    border-color: #88C057;
+    cursor: pointer;
+}
+button:disabled {
+    color: RGB(160, 160, 160);
+    border-color: RGB(160, 160, 160);
+}
+
+form {
+    margin-top: 80px;
+    color: #88C057;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+input {
+    background: none;
+    border: 1px solid #D13834;
+    color: #D13834;
+    width: 300px;
+    height: 25px;
+    margin-bottom: 5px;
+    padding: 1px 4px;
+}
+#addItem {
+    color: #D13834;
+    border-color: #D13834;
+    font-size: 1.2em;
+    padding: 1px 0px 0px 2px;
+    margin: 6px;
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+}
+#addItem:hover {
+    border-color: #88C057;
+}
+
+ul {
+    list-style: square;
+    text-align: justify;
+    width: 380px;
+    margin: 0 auto;
+    padding-right: 25px;
+}
+li {
+    padding: 6px;
+}
